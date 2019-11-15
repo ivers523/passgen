@@ -11,12 +11,12 @@
 </head>
 
 <body>
-    <div class="container bg-light text-justify m-100">
+    <div class="container bg-light text-center m-100">
         <div class="row">
             <div class="col">
                 <h1>Generate a Secure Password</h1>
                 <hr>
-                <div class="input-group">
+                <div class="input-group justify-content-center">
                     <p>Enter desired password length:<input id="passwordLength" type="number" class="form-control"
                             placeholder="(8-128)" aria-label="Numbers" aria-describedby="basic-addon1"></p>
                 </div>
@@ -37,7 +37,7 @@
 
     <script>
 
-        // declaring buttons / jumbotron
+        // declare buttons / jumbotron
 
         const generate = document.getElementById("generate");
         const copy = document.getElementById("copy");
@@ -50,40 +50,43 @@
         const numArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
         const specArray = ["!", "#", "$", "%", "&", "''", "(", ")", "*", "+", "-", ".", "/", ":", ";", "=", "?", "@", "^", "_", "{", "|", "}"];
 
-        // final array pool
+        // combined array pool
         let arrayPool = lowerArray.concat(upperArray, numArray, specArray);
-
-
 
         generate.onclick = function generate() {
             let passLength = document.getElementById("passwordLength").value;
             console.log("password length " + passLength);
-            
-           // ensures password length 8-128 chars 
+
+            // ensure password length 8-128 chars 
             if (passLength < 8) {
-                alert("Password length must be greater than 8 characters!");
+                alert("Password length must not be less than 8 characters!");
             }
             if (passLength > 128) {
-                alert("Password length must be less than 128 characters!")
+                alert("Password length must not be more than 128 characters!");
 
             }
 
+            // for loop
             for (let i = 0; i < passLength; i++) {
 
-            let passString = arrayPool[Math.floor(Math.random() * arrayPool.length)];
+                let passString = arrayPool[Math.floor(Math.random() * arrayPool.length)];
 
-            console.log(passString);
+                console.log(passString);
 
-            arrayPool.push(passString);
-                    } 
+            // display password on jumbotron
 
+                jumboEl.innerHTML= passString
 
+                // ! Current error = only displaying the last value of the string
             }
-          
-            
-    
 
-        
+
+        }
+
+
+
+
+
 
         copy.onclick = function copy() {
             console.log("button two clicked");
