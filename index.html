@@ -26,9 +26,11 @@
                 <hr>
                 <div class="jumbotron" id="jumbo">
                     <div class="container">
-                        <p class="lead">Your secure password!</p>
+                        <p class="lead"></p>
                     </div>
                 </div>
+                <!--reset button c/o stack overflow-->
+                <input class="btn btn-primary" type="reset" value="Reset" onClick="window.location.reload();">
             </div>
         </div>
 
@@ -63,9 +65,7 @@
             }
             if (passLength > 128) {
                 alert("Password length must not be more than 128 characters!");
-
             }
-
             // for loop
             for (let i = 0; i < passLength; i++) {
 
@@ -73,26 +73,19 @@
 
                 console.log(passString);
 
-            // display password on jumbotron
+                // display password on jumbotron
 
-                jumboEl.innerHTML= passString
+                jumboEl.innerHTML += passString
 
-                // ! Current error = only displaying the last value of the string
+                // ! Current error = only displaying the last console value of the string
             }
 
-
         }
-
-
-
-
-
-
+        // copy functionality not currently supported
         copy.onclick = function copy() {
             console.log("button two clicked");
+
         }
-
-
     </script>
 
 </body>
